@@ -57,7 +57,7 @@ The Social Media App is open source and available under the MIT License. Feel fr
 
 ## Acknowledgements
 
-Express.js - Web Application Framework
-Neo4j - Graph Database
-Neogma - Graph Database OGM
-Redis - In-Memory Data Store
+1. Express.js - Web Application Framework
+2. Neo4j - Graph Database
+3. Neogma - Graph Database OGM https://themetalfleece.github.io/neogma/
+4. Redis - In-Memory Data Store
