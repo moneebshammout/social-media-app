@@ -1,0 +1,9 @@
+node_modules
+.git
+.vscode
+.eslintrc.json
+.gitignore
+.prettiercc
+jsconfig.json
+*.env
+backup

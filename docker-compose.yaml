@@ -1,0 +1,64 @@
+version: '3.8'
+
+networks:
+  app-network:
+
+services:
+  node_redis:
+    container_name: node_redis
+    image: redis:7.0-alpine
+    networks:
+      - app-network
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_volume:/var/lib/redis/data
+
+  neo4j:
+    container_name: neo4j
+    image: neo4j:5.4.0
+    ports:
+      - 7474:7474
+      - 7687:7687
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+      - neo4j_import:/var/lib/neo4j/import
+      - neo4j_plugins:/plugins
+    environment:
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_apoc_import_file_use__neo4j__config=true
+      - NEO4JLABS_PLUGINS=["apoc"]
+      - NEO4J_AUTH=neo4j/neo4j_auth
+    networks:
+      - app-network
+
+  node_backend:
+    build: .
+    networks:
+      - app-network
+    ports:
+      - 4000:4000
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      # - DB_URI=neo4j://localhost:7687
+      - DB_URI=bolt://neo4j:7687
+      - DB_USERNAME=neo4j
+      - DB_PASSWORD=neo4j_auth
+      - REDIS_HOST=node_redis
+      - REDIS_PORT=6379
+    depends_on:
+      - node_redis
+      - neo4j
+    command: sh -c "until nc -z neo4j 7687; do sleep 5; done && npm start"
+     
+
+
+volumes:
+  redis_volume: {}
+  neo4j_data: {}
+  neo4j_logs: {}
+  neo4j_import: {}
+  neo4j_plugins: {}

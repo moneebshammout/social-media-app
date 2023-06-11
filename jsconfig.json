@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2021",
+    "moduleResolution": "Node",
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    // "exclude": ["node_modules"],
+    "baseUrl": ".",
+    "paths": {
+      "@/components /*": ["./ components/*"],
+      "@/lib/*": ["./lib/*"]
+    }
+  },
+  "exclude": ["node_modules", "**/node_modules/*"]
+}
