@@ -16,14 +16,10 @@ The Social Media App is a Node.js-based social media platform that incorporates 
 ## Technologies Used
 
 - Node.js
-- Neo4j Graph Database
-- Redis
 - Express.js
-- Socket.IO
-- Passport.js
-- Multer
-- Bootstrap
-- EJS
+- Neo4j Graph Database
+- Neogma Graph Database OGM https://themetalfleece.github.io/neogma/
+- Redis
 
 ## Installation
 
@@ -54,10 +50,3 @@ To contribute:
 ## License
 
 The Social Media App is open source and available under the MIT License. Feel free to use, modify, and distribute the code as per the terms of the license.
-
-## Acknowledgements
-
-1. Express.js - Web Application Framework
-2. Neo4j - Graph Database
-3. Neogma - Graph Database OGM https://themetalfleece.github.io/neogma/
-4. Redis - In-Memory Data Store
