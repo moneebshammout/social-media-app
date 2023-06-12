@@ -86,15 +86,6 @@ class Query {
    */
   async createFullTextIndex({ model, name, properties, session = null }) {
     const indexList = properties.map((property) => `n.${property}`).join(', ');
-    /**
-     *  OPTIONS 
-          { 
-            indexConfig: {\`fulltext.eventually_consistent\`: true,
-                          \`fulltext.analyzer\`: 'standard-no-stopwords'
-          }
-           
-          } 
-     */
     await this.runner.run(
       `
     CREATE FULLTEXT INDEX ${name} IF NOT EXISTS  FOR (n:${model}) ON EACH [${indexList}]
