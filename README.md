@@ -9,6 +9,8 @@ The Social Media App is a Node.js-based social media platform that incorporates 
 - Polls with real-time voting results
 - Product Reviews with ratings and comments
 - Personalized News Feed
+- Paid Feed
+- Followers Feed
 - Search Functionality
 - Privacy Settings
 
