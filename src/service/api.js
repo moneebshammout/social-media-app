@@ -34,16 +34,6 @@ exports.createRelationShip =
       toId,
       relation: config.name,
     });
-    // await model.relateTo(
-    //   {
-    //     alias: relation,
-    //     where: {
-    //       source: { id: fromId },
-    //       target: { id: toId },
-    //     },
-    //     assertCreatedRelationships: 1,
-    //   },
-    // );
 
     res.send(formatResponse({}, 'Relationship Created'));
   };

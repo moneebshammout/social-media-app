@@ -3,8 +3,8 @@ const { Comment } = require('../models');
 const { formatResponse, toNativeTypes } = require('../utils/requests');
 const { currentDate } = require('../utils/date');
 const CommentQueries = require('../queries/comment.queries');
-// const { saveTempCache } = require('../utils/redis');
-// const { commentsCache } = require('../constants');
+const { saveTempCache } = require('../utils/redis');
+const { commentsCache } = require('../constants');
 
 /**
  * Create comment.
@@ -82,11 +82,11 @@ exports.getComments = async (req, res) => {
 
   const data = await CommentQueries.getComments({ id, entity, page, limit });
   const result = toNativeTypes(data.records);
-  // await saveTempCache({
-  //   key: `CommentsBy${id}page${page}`,
-  //   seconds: commentsCache,
-  //   value: result,
-  // });
+  await saveTempCache({
+    key: `CommentsBy${id}page${page}`,
+    seconds: commentsCache,
+    value: result,
+  });
 
   res.send(formatResponse(result, 'Comments fetched'));
 };
